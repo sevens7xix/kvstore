@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	listener, err := net.Listen("tcp", "6380")
+	listener, err := net.Listen("tcp", ":6380")
 
 	if err != nil {
 		log.Fatal("Error listening TCP port 6380:", err)
