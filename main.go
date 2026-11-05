@@ -2,11 +2,13 @@ package main
 
 import (
 	handler "kvstore/internal"
+	"kvstore/internal/store"
 	"log"
 	"net"
 )
 
 func main() {
+	storeStorage := make(store.Store)
 	listener, err := net.Listen("tcp", ":6380")
 
 	if err != nil {
@@ -23,6 +25,6 @@ func main() {
 			continue
 		}
 
-		go handler.HandleConn(conn)
+		go handler.HandleConn(storeStorage, conn)
 	}
 }
